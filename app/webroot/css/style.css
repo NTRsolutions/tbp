@@ -1,13 +1,8 @@
-.prev_logo {
-	max-width: 200px;
-	max-height: 200px;
+#logout_btn{
+	box-shadow: 0px 5px 7px 1px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	transition: all 0.5s ease 0s;
+	margin-right: 0.5%;
 }
-/*
-#left_side_bar {
-    padding: 0px;
-    margin-left: 20px;
-    width: 18%;
-}*/
 
 /** Paging **/
 .paging {
@@ -59,73 +54,9 @@ th a.asc:after {
 th a.desc:after {
 	content: ' ⇡';
 }
-
-.profile-img-card {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-}
-/*
-#top_info_panel {
-	margin-top:50px;
-}*/
-
-
-
-
-/* Form errors */
-form .error {
-	background: #FFDACC;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	font-weight: normal;
-}
-form .error-message {
-	-moz-border-radius: none;
-	-webkit-border-radius: none;
-	border-radius: none;
-	border: none;
-	background: none;
-	margin: 0;
-	padding-left: 4px;
-	padding-right: 0;
-}
-form .error,
-form .error-message {
-	color: #9E2424;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	-ms-box-shadow: none;
-	-o-box-shadow: none;
-	box-shadow: none;
-	text-shadow: none;
-}
-/* For DatePicker*/
-	#startDate,#endDate,#createdON, #fromDatepicker, #toDatepicker{
-		display: block;
-		width: 405px;
-		height: 34px;
-		padding: 6px 12px;
-		font-size: 14px;
-		line-height: 1.42857143;
-		color: #555;
-		background-color: #fff;
-		background-image: none;
-		border: 1px solid #ccc;
-		border-radius: 4px;
-	}
-#export-camp {
-	margin-right:2%;
-	margin-top:1%;
-	margin-bottom: 0.1%;
-}
-
-.camp_priority {
-	width: 40px;
-	text-align: center;
-}
+.nav-tabs {border-bottom: 2px solid #DDD; }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+.nav-tabs > li > a { border: none; color: #666; }
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+.nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
