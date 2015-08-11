@@ -7,11 +7,12 @@
 	<?php echo $this->Html->charset(); ?>
 		<link rel="shortcut icon" href="<?php //echo SITE_URL ?>img/logo.png">
 	<title>
-		<?php echo $webdesription ?>
-		<?php echo $title_for_layout; ?>
+		TaskBucksPro
+		<?php //echo $webdesription ?>
+		<?php //echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $this->Html->css('cake.generic');
+		// echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min');
 		//echo $this->Html->css('font-awesome.min');
 		echo $this->Html->css('zebra_datepicker');
@@ -29,7 +30,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="col-sm-12">
+		<div class="row">
 			<?php
 				$username=$appConObj->getLoggedInUserName();
 				if($username!=""){
@@ -38,17 +39,17 @@
 			 ?>
 		</div>
 		<div class="row">
-			<!--<div class="col-sm-2">
+			<!-- <div class="col-sm-2">
 				<?php //echo $this->element('sidebar'); ?>
 			</div> -->
-			<!-- <div class="col-sm-10"> -->
+			<div class="col-sm-10">
 		    	<div id="content">
 					<?php
 						echo $this->Session->flash(); 
 						echo $this->fetch('content'); 
 					?>
 				</div>
-		<!--	</div> -->
+			</div>
 		</div>
 	</div>
 	<div class="row">
