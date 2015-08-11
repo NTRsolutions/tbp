@@ -1,92 +1,125 @@
-<div class="campaigns view">
-<h2><?php echo __('Campaign'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($campaign['Campaign']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Client'); ?></dt>
-		<dd>
+<div class="table">
+<h2><?php echo __('Campaigns'); ?></h2>
+	<table class="table table-bordered table-responsive table-striped">
+		<tbody>
+		<tr class="something">
+			<td class="col-md-2"><strong><?php echo __('Id'); ?></strong></td>
+			<td><?php echo h($campaign['Campaign']['id']); ?>&nbsp;</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Client'); ?></strong></td>
+		<td>
 			<?php echo $this->Html->link($campaign['Client']['id'], array('controller' => 'clients', 'action' => 'view', $campaign['Client']['id'])); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Title'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Title'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['title']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Package Name'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Package Name'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['package_name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Total Data'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Total Data'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['total_data']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Daily Data Limit'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Daily Data Limit'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['daily_data_limit']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Campaign Priority'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Campaign Priority'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['campaign_priority']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Os Start Version'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Os Start Version'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['os_start_version']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Os End Version'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Os End Version'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['os_end_version']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('App Download Link'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('App Download Link'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['app_download_link']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('App Logo Name'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('App Logo Name'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['app_logo_name']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Start Date'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Start Date'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['start_date']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('End Date'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('End Date'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['end_date']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Type'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Type'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['type']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Status'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Status'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['status']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Created'); ?></strong></td>
+		<td>
 			<?php echo h($campaign['Campaign']['created']); ?>
 			&nbsp;
-		</dd>
-		<dt><?php echo __('Modified'); ?></dt>
-		<dd>
+		</td>
+		</tr>
+		<tr class="something">
+		<td class="col-md-2"><strong><?php echo __('Modified'); ?></dt>
+		<td>
 			<?php echo h($campaign['Campaign']['modified']); ?>
 			&nbsp;
-		</dd>
-	</dl>
+		</td>
+		</tr>
+		</tbody>
+	</table>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
