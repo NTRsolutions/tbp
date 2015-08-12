@@ -210,7 +210,6 @@
 						'label'=>'*Only for new Users'
 					));
 				?>
-				
 			</div>
 		</div>
 		<div class="col-sm-12">
