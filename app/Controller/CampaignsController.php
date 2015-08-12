@@ -69,20 +69,29 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->isLoggedIn();
 		if (!$this->Campaign->exists($id)) {
 			throw new NotFoundException(__('Invalid campaign'));
 		}
-		if ($this->request->is(array('post', 'put'))) {
-			if ($this->Campaign->save($this->request->data)) {
-				$this->Session->setFlash(__('The campaign has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The campaign could not be saved. Please, try again.'));
+		$options = array('conditions' => array('Campaign.' . $this->Campaign->primaryKey => $id));
+		$old_data = $this->Campaign->find('first', $options);
+		if($this->request->is('post') || $this->request->is('put')) {
+			$upload_file = $this->request->data["Campaign"]["app_logo"];
+			if(empty($upload_file["name"])) {
+				$this->request->data['Campaign']['app_logo_name'] = $old_data['Campaign']['app_logo_name'];
+			}else{
+				$file_name = time().'_'.$upload_file["name"];
+				$upload_path = UPLOAD_PATH. DS .$file_name;
+				$this->request->data['Campaign']['app_logo_name'] = $file_name;
 			}
-		} else {
-			$options = array('conditions' => array('Campaign.' . $this->Campaign->primaryKey => $id));
-			$this->request->data = $this->Campaign->find('first', $options);
+			if($this->Campaign->save($this->request->data)) {
+				$this->Session->setFlash(CAMPAIGN_UPDATED,'alert-box', array('class'=>'alert-success'));
+				$this->fileUpload($upload_file,$upload_path);
+				$this->redirect(array('action' => 'view',$id));
+			}else{
+				$this->Session->setFlash(__(CAMPAIGN_NOT_UPDATED,'alert-box', array('class'=>'alert-danger')));
+			}
+		}else{
+			$this->request->data = $old_data;
 		}
 		$clients = $this->Campaign->Client->find('list');
 		$this->set(compact('clients'));
