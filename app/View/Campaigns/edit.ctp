@@ -25,32 +25,31 @@
 		array('method '=>'POST','async' => true,'update' => '#content')
 	));
 ?>
-<div class="row" style="margin-bottom: 50px;">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h1 class="panel-title">
-				Edit Campaigns
-				<?php
-					if($Status==0){	?>
-					<button id="<?php echo "Camp".$campaignID;?>" class="btn btn-warning"><span class="glyphicon glyphicon-play"></span>Activate</button>
-				<?php
-					}else if($Status==1){ ?>
-						<button id="<?php echo "Camp".$campaignID;?>" class="btn btn-danger"><span class="glyphicon glyphicon-pause">Pause</button>
-				<?php
-					}else { ?>
-						<button id="<?php echo "Camp".$campaignID;?>" class="btn btn-success"><span class="glyphicon glyphicon-play">Resume</button>
-				<?php
-					} ?>
-			</h1>
-		</div>
-	</div>
-	<div class="col-sm-10" id="custom-col">
-		<div class="campaigns form">
+<div class="row">
+    <div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            Edit Campaigns
+        </h4>
+    </div>
+    <!-- </div> -->
+	<div class="panel-body">
+		<?php
+			if($Status==0){	?>
+			<button id="<?php echo "Camp".$campaignID;?>" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-play"></span>Activate</button>
+		<?php
+			}else if($Status==1){ ?>
+				<button id="<?php echo "Camp".$campaignID;?>" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-pause">Pause</button>
+		<?php
+			}else { ?>
+				<button id="<?php echo "Camp".$campaignID;?>" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-play">Resume</button>
+		<?php
+			} ?>
 		<?php echo $this->Form->create('Campaign',array('enctype' => 'multipart/form-data','class'=>'form-horizontal')); ?>
 		<?php echo $this->Form->input('id'); ?>
     	<div class="col-sm-12">
 		    <div class="col-sm-12">
-		    	<label class="lbl-txt">Client</label><br>
+		    	<label class="lbl-txt">Client</label>
 				<?php  
 				    echo $this->Form->input('client_id',array(
 						'class'=>'form-control',
@@ -91,7 +90,7 @@
 			<div class="col-xs-5">
 				<label class="lbl-txt">Total Data</label><br>
 	            <div class="input-group">
-	                <span class="input-group-addon"><span class="fa fa-inr"></span></span>
+	                <span class="input-group-addon"><span class="glyphicon glyphicon-sort"></span></span>
 	                <?php echo $this->Form->input("total_data",array(
 	                			'label'=>false,
 	                			'class'=>'form-control',
@@ -104,7 +103,7 @@
 	        <div class="col-sm-5 pull-right">
 				<label class="lbl-txt">Daily Data Limit</label><br>
 			    <div class="input-group">
-	                <span class="input-group-addon"><span class="fa fa-inr"></span></span>
+	                <span class="input-group-addon"><span class="glyphicon glyphicon-sort"></span></span>
 	                <?php echo $this->Form->input("daily_data_limit",array(
 	                			'label'=>false,
 	                			'class'=>'form-control',
@@ -221,7 +220,8 @@
 		    </div>
 		</div>
 		<?php echo $this->Form->end(); ?>
-		</div>
+	</div>
+</div>
 	</div>
 </div>
 <script type="text/javascript">

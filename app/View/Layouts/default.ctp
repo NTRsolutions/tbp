@@ -12,8 +12,11 @@
 		<?php //echo $title_for_layout; ?>
 	</title>
 	<?php
-		// echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('material_css/roboto.min.css');
+		echo $this->Html->css('material_css/material.min.css');
+		echo $this->Html->css('material_css/ripples.min.css');
+		
 		//echo $this->Html->css('font-awesome.min');
 		echo $this->Html->css('zebra_datepicker');
 		echo $this->Html->css('style');
@@ -21,6 +24,8 @@
 		echo $this->Html->script('jquery-2.1.4.min');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('zebra_datepicker');
+		echo $this->Html->script('material_js/ripples.min.js');
+		echo $this->Html->script('material_js/material.min.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -39,22 +44,35 @@
 			 ?>
 		</div>
 		<div class="row">
-			<!-- <div class="col-sm-2">
-				<?php //echo $this->element('sidebar'); ?>
-			</div> -->
-			<div class="col-sm-10">
-		    	<div id="content">
-					<?php
-						echo $this->Session->flash(); 
-						echo $this->fetch('content'); 
-					?>
+			<?php echo $this->Session->flash(); ?>
+		</div>
+		<div class="row">
+			<div class="panel panel-info">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-2">
+							<?php 
+							echo $this->element('sidebar'); ?>
+						</div>
+						<div class="col-sm-10">
+					    	<div id="content">
+								<?php
+									echo $this->fetch('content'); 
+								?>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<?php //echo $this->element('sql_dump'); ?>
+		</div>
 	</div>
-	<div class="row">
-		<?php //echo $this->element('sql_dump'); ?>
-	</div>
-	
 </body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.material.init();
+    });
+</script>
 </html>

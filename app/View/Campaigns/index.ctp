@@ -1,6 +1,6 @@
-<div class="table">
+<div class="">
 	<h2><?php echo __('Campaigns'); ?></h2>
-	<table class="table table-bordered table-responsive">
+	<table class="table table-responsive-vertical table-hover">
 	<thead>
 		<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -35,7 +35,7 @@
 		<td><?php echo h($campaign['Campaign']['campaign_priority']); ?>&nbsp;</td>
 		<td><?php echo h($campaign['Campaign']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($campaign['Campaign']['end_date']); ?>&nbsp;</td>
-		<td><?php echo h($campaign['Campaign']['created']); ?>&nbsp;</td>
+		<td><?php echo h(date('Y-m-d',strtotime($campaign['Campaign']['created']))); ?>&nbsp;</td>
 		<!-- <td><?php echo h($campaign['Campaign']['package_name']); ?>&nbsp;</td> -->
 		<!-- <td><?php echo h($campaign['Campaign']['os_start_version']); ?>&nbsp;</td> -->
 		<!-- <td><?php echo h($campaign['Campaign']['os_end_version']); ?>&nbsp;</td> -->
@@ -67,7 +67,7 @@
 	?>
 	</div>
 </div>
-<nav class="navbar navbar-default sidebar" role="navigation">
+<!-- <nav class="navbar navbar-default sidebar" role="navigation">
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -76,4 +76,4 @@
 		<li><?php echo $this->Html->link(__('New Client'), array('controller' => 'clients', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-</nav>
+</nav> -->

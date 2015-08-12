@@ -9,7 +9,7 @@ class AdminController extends AppController {
 	 *	Returns 			: Send to login page.
 	 */
 	public function index() {
-		$this->isLoggedIn();
+		// $this->isLoggedIn();
 		if($this->Session->read('Admin.username')!=""){
 			$this->redirect(array('action' => 'dashboard'));
 		}
@@ -35,10 +35,10 @@ class AdminController extends AppController {
 				$username=$this->request['data']['Admin']['username'];
 				$password=$this->request['data']['Admin']['password'];
 				if($username==''){
-					$this->Session->setFlash(EMPTY_USERNAME,'error');
+					$this->Session->setFlash(EMPTY_USERNAME,'alert-box', array('class'=>'alert-danger'));
 					$this->redirect(array('controller' => 'Admin','action' => 'login'));
 				} elseif($password=='') {
-					$this->Session->setFlash(EMPTY_PASSWORD,'error');
+					$this->Session->setFlash(EMPTY_PASSWORD,'alert-box', array('class'=>'alert-danger'));
 					$this->redirect(array('controller' => 'Admin','action' => 'login'));
 				}
 				if($username!='' and $password!='' ){
@@ -48,21 +48,19 @@ class AdminController extends AppController {
 							'Admin.password' => $password
 						)
 					));
-					// pr($userdata);die;
 					if (count($userdata)>=1) {
 						//set session variable
 						$this->Session->write('logged_user_data', $userdata);
 						$this->Session->write('Admin.username', $userdata[0]['Admin']['username']);
 						$this->Session->write('Admin.user_id', $userdata[0]['Admin']['id']);
 						$this->Session->write('Admin.email',$userdata[0]['Admin']['email']);
-						//set flash message
-						// $username = $this->Session->read('Admin.username');
-						
-						$this->Session->setFlash(LOGIN_SUCCESS, 'success');
+						$this->Session->setFlash(LOGIN_SUCCESS,'alert-box', array('class'=>'alert-success'));
+						// $this->Session->setFlash(LOGIN_SUCCESS, 'success');
 						$this->redirect('dashboard');
 					} 
 					else {
-						$this->Session->setFlash(WRONG_USER_NAME_OR_PASSWORD,'error');
+						$this->Session->setFlash(WRONG_USER_NAME_OR_PASSWORD,'alert-box', array('class'=>'alert-danger'));
+						// $this->Session->setFlash(WRONG_USER_NAME_OR_PASSWORD,'error');
 						$this->redirect(array('controller' => 'Admin','action' => 'login'));
 					}
 				}
@@ -78,8 +76,11 @@ class AdminController extends AppController {
 	 */
 	public function dashboard() {
 		$this->isLoggedIn();
-		$this->layout ="admin";
+		// $this->layout ="admin";
 	}
+	 public function login1(){
+		 $this->layout = "test";
+	 }
 }
 
 ?>

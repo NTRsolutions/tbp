@@ -1,5 +1,5 @@
-<div class="table-responsive">
-    <table class="table table-bordered">
+<div class="table-responsive-vertical shadow-z-1">
+    <table class="table table-hover table-bordered">
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
@@ -35,7 +35,7 @@
 	?>
 	</div>
 </div>
-<nav class="navbar navbar-default sidebar" role="navigation">
+<!-- <nav class="navbar navbar-default sidebar" role="navigation">
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
@@ -44,4 +44,4 @@
 		<li><?php echo $this->Html->link(__('New Campaign'), array('controller' => 'campaigns', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
-</nav>
+</nav> -->

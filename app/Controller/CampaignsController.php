@@ -22,6 +22,12 @@ class CampaignsController extends AppController {
 	public function index() {
 		$this->isLoggedIn();
 		$this->Campaign->recursive = 0;
+		$conditions = array();
+		$this->paginate = array(
+			'conditions'=>$conditions,
+			'limit' => CAMPAIGN_LIMIT,
+			'order' => array('created' => 'desc')
+		);
 		$this->set('campaigns', $this->Paginator->paginate());
 	}
 
@@ -58,6 +64,7 @@ class CampaignsController extends AppController {
 			}
 		}
 		$clients = $this->Campaign->Client->find('list');
+		// debug($clients);
 		$this->set(compact('clients'));
 	}
 

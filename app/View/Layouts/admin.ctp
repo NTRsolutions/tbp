@@ -11,12 +11,17 @@
 	</title>
 	<?php
 		
-		echo $this->Html->css('bootstrap.min');
-		//echo $this->Html->css('font-awesome.min');
 		echo $this->Html->css('style');
+		echo $this->Html->css('bootstrap.min');
+		echo $this->Html->css('material_css/roboto.min.css');
+		echo $this->Html->css('material_css/material.min.css');
+		echo $this->Html->css('material_css/ripples.min.css');
+		//echo $this->Html->css('font-awesome.min');
 
 		echo $this->Html->script('jquery-2.1.4.min');
 		echo $this->Html->script('bootstrap.min');
+		echo $this->Html->script('material_js/ripples.min.js');
+		echo $this->Html->script('material_js/material.min.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -34,17 +39,14 @@
 			 ?>
 		</div>
 		<div class="row">
-			<!-- <div class="col-sm-2">
-				<?php //echo $this->element('sidebar'); ?>
-			</div> -->
-			<div class="col-sm-10">
+			<div class="col-sm-12">
 		    	<div id="content">
 					<?php
 						echo $this->Session->flash(); 
-						echo $this->fetch('content'); 
+						echo $this->fetch('content');
 					?>
 				</div>
-		<!--	</div> -->
+			</div>
 		</div>
 	</div>
 	<div class="row">
