@@ -1,21 +1,3 @@
-	<?php
-/*
-		echo $this->Form->input('client_id');
-		echo $this->Form->input('title');
-		echo $this->Form->input('package_name');
-		echo $this->Form->input('total_data');
-		echo $this->Form->input('daily_data_limit');
-		echo $this->Form->input('campaign_priority');
-		echo $this->Form->input('os_start_version');
-		echo $this->Form->input('os_end_version');
-		echo $this->Form->input('app_download_link');
-		echo $this->Form->input('app_logo_name');
-		echo $this->Form->input('start_date');
-		echo $this->Form->input('end_date');
-		echo $this->Form->input('type');
-		echo $this->Form->input('status');
-*/
-	?>
 <style>
 	.lbl-txt {
 		color: #337ab7;
@@ -29,7 +11,7 @@
 <div class="row" style="margin-bottom: 10px;">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<h1 class="panel-title">Add Campaign</h1>
+				<h1 class="panel-title">Add Campaigns</h1>
 			</div>
 		</div>
 
@@ -80,28 +62,28 @@
 			<div class="col-xs-5">
 				<label class="lbl-txt">Total Data</label><br>
 	            <div class="input-group">
-	                <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+	                <span class="input-group-addon"><span class="fa fa-inr"></span></span>
 	                <?php echo $this->Form->input("total_data",array(
 	                			'label'=>false,
 	                			'required'=>false,
 	                			'class'=>'form-control',
-	                			'placeholder'=>'Total'
+	                			'placeholder'=>'0.00'
 								)
 							);
 					?>
 	            </div>
 	        </div>
 	        <div class="col-sm-5 pull-right">
-				<label class="lbl-txt">Data Limit</label><br>
+				<label class="lbl-txt">Daily Data Limit</label><br>
 			    <div class="input-group">
-	                <span class="input-group-addon"><span class="glyphicon glyphicon-tasks"></span></span>
+	                <span class="input-group-addon"><span class="fa fa-inr"></span></span>
 	                <?php echo $this->Form->input("daily_data_limit",array(
 	                			'label'=>false,
 	                			'required'=>false,
 	                			'class'=>'form-control',
-	                			'placeholder'=>'Limit/Day'
-								)
-							);
+	                			'placeholder'=>'0.00'
+							)
+						);
 					?>
 	        	</div>
 	         </div>
@@ -139,7 +121,7 @@
 		</div>
 		<div class="col-sm-12 ">
 			<div class="col-xs-5">
-				<label class="lbl-txt">OS End Version</label><br>
+				<label class="lbl-txt">OS Start Version</label><br>
 	            <div class="input-group">
 	                <span class="input-group-addon"><span class="glyphicon glyphicon-ok-sign"></span></span>
 	                <?php echo $this->Form->input("os_start_version",array(
@@ -152,7 +134,7 @@
 	            </div>
 	        </div>
 	        <div class="col-sm-5 pull-right">
-				<label class="lbl-txt">OS Start Version</label><br>
+				<label class="lbl-txt">OS End Version</label><br>
 			    <div class="input-group">
 	                <span class="input-group-addon"><span class="glyphicon glyphicon-ok-sign"></span></span>
 	                <?php echo $this->Form->input("os_end_version",array(
@@ -203,9 +185,19 @@
 			<div class="col-sm-7 pull-right">
 				<div class="input-group">
 	                <?php 
-						echo $this->Html->image('', array('class'=>'prev_logo','alt'=>'No Logo Uploaded'));
+						//echo $this->Html->image('', array('class'=>'prev_logo','alt'=>'No Logo Uploaded'));
 					?>
 				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 space">
+			<div class="col-sm-3" style="color: red;">
+				<?php
+					echo $this->Form->input('type', array(
+						'label'=>'*Only for new Users'
+					));
+				?>
+				
 			</div>
 		</div>
 		<div class="col-sm-12">
@@ -221,14 +213,11 @@
 	</div>
 </div>
 <script type="text/javascript">
-/*
 	$(document).ready(function(){
 		$("#startDate").Zebra_DatePicker({
 			direction: 1
 		});
-*/
 		
-/*
 		$("#endDate").Zebra_DatePicker({
 			onSelect: function() {
 				var start_date = $("#startDate").val();
@@ -244,10 +233,8 @@
 			}
 		});
 		/* To Preview App Logo */
-		
-/*		$('#app_logo').on('change', function(){
+		$('#app_logo').on('change', function(){
 			$('.prev_logo')[0].src = window.URL.createObjectURL(this.files[0]);
 		});
-	});*/
-
+	});
 </script>
