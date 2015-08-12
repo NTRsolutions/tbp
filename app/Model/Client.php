@@ -8,6 +8,14 @@ App::uses('AppModel', 'Model');
 class Client extends AppModel {
 
 /**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'client_name';
+
+/**
+/**
  * Validation rules
  *
  * @var array
