@@ -53,20 +53,31 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function add() {
-		$this->isLoggedIn();
 		if ($this->request->is('post')) {
 			$this->Campaign->create();
-			if ($this->Campaign->save($this->request->data)) {
-				$this->Session->setFlash(__('The campaign has been saved.'));
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The campaign could not be saved. Please, try again.'));
+			$this->Campaign->set($this->request->data);
+			if ($this->Campaign->validates()) {
+				$upload_file = $this->request->data["Campaign"]["app_logo"];
+				$file_name = time().'_'.$upload_file["name"];
+				$upload_path = UPLOAD_PATH.$file_name;
+				if($this->fileUpload($upload_file,$upload_path)){
+					$this->request->data['Campaign']['app_logo_name'] = $file_name;
+					if ($this->Campaign->save($this->request->data)) {
+						$this->Session->setFlash(CAMPAIGN_SAVED,'success');
+						$this->redirect(array('action' => 'index'));
+					} else {
+						$this->Session->setFlash(CAMPAIGN_NOT_SAVED,'alert-box', array('class'=>'alert-success'));
+					}
+				}else {
+					$this->Session->setFlash(LOGO_NOT_UPLOADED,'alert-box', array('class'=>'alert-danger'));
+				}
 			}
 		}
 		$clients = $this->Campaign->Client->find('list');
 		// debug($clients);
 		$this->set(compact('clients'));
 	}
+
 
 /**
  * edit method
