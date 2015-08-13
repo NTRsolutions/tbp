@@ -23,11 +23,11 @@ class CampaignsController extends AppController {
  */
 	public function index($status=null) {
 		$this->isLoggedIn();
+		$CampaignType="live";
 		$this->Campaign->recursive = 0;
-                $conditions = array('status'=>1);
-		$conditions = array();
-                
-                /* For Getting Campaigns According to Status(Live, Paused Or UnderReveiw) */
+        $conditions = array('status'=>1);
+		        
+        /* For Getting Campaigns According to Status(Live, Paused Or UnderReveiw) */
 		if($status){
 			if($status==1){
 				$conditions['status'] = 1;
@@ -46,7 +46,10 @@ class CampaignsController extends AppController {
 			'limit' => CAMPAIGN_LIMIT,
 			'order' => array('created' => 'desc')
 		);
-		$this->set('campaigns', $this->Paginator->paginate());
+		$this->set(array(
+		'campaigns'=>$this->Paginator->paginate(),
+		'CampaignType'=>$CampaignType
+		));
 	}
 
 /**
@@ -167,7 +170,12 @@ class CampaignsController extends AppController {
 	public function playPause($id=null,$status=null, $current_page=null){
 		
 		//debug($id." ".$status." ".$current_page_url);
-		$CampaignType = $_POST['CampaignType'];
+		if(count($_POST)>0){
+			$CampaignType = $_POST['CampaignType'];
+		}else {
+			$CampaignType ="";
+		}
+		
 		$page = "";
 		if($current_page==null){
 			$page = "page:1";

@@ -13,9 +13,9 @@
 	</title>
 	<?php
 		echo $this->Html->css('bootstrap.min');
-		echo $this->Html->css('material_css/roboto.min.css');
-		echo $this->Html->css('material_css/material.min.css');
-		echo $this->Html->css('material_css/ripples.min.css');
+		echo $this->Html->css('roboto.min.css');
+		echo $this->Html->css('material.min.css');
+		echo $this->Html->css('ripples.min.css');
 		
 		//echo $this->Html->css('font-awesome.min');
 		echo $this->Html->css('zebra_datepicker');
@@ -24,8 +24,8 @@
 		echo $this->Html->script('jquery-2.1.4.min');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('zebra_datepicker');
-		echo $this->Html->script('material_js/ripples.min.js');
-		echo $this->Html->script('material_js/material.min.js');
+		echo $this->Html->script('ripples.min.js');
+		echo $this->Html->script('material.min.js');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

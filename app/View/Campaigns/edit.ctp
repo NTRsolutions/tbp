@@ -8,7 +8,6 @@
 	}
 </style>
 <?php
-	//pr($this->request->data);
 	$cStatus="";
 	$current_page="edit";
 	$campaignID = $this->request->data['Campaign']['id'];
@@ -22,7 +21,7 @@
 	}
 	$this->Js->get('#Camp'.$campaignID)->event('click',$this->Js->request(
 		array('action' => 'playPause', $campaignID,$cStatus,$current_page),
-		array('method '=>'POST','async' => true,'update' => '#content')
+		array('method '=>'POST','success'=>'alert("Status Updated");','async' => true,'update' => '#content')
 	));
 ?>
 <div class="row">

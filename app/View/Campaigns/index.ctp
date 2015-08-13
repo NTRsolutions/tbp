@@ -1,4 +1,5 @@
 <div class="">
+	<?php //echo $CampaignType; ?>
 	<h2><?php echo __('Campaigns'); ?></h2>
 	<table class="table table-responsive-vertical table-hover">
 	<thead>
