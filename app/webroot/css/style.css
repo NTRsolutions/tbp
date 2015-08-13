@@ -53,3 +53,11 @@ th a.asc:after {
 th a.desc:after {
 	content: ' ⇡';
 }
+
+/* For Error Cake's Default Error Messages*/
+.error-message{
+	clear: both;
+	padding: 5px !important;
+	color: #F30B0B !important;
+}
+	

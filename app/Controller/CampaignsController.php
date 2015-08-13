@@ -53,6 +53,7 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function add() {
+		$this->isLoggedIn();
 		if ($this->request->is('post')) {
 			$this->Campaign->create();
 			$this->Campaign->set($this->request->data);
@@ -78,7 +79,6 @@ class CampaignsController extends AppController {
 		$this->set(compact('clients'));
 	}
 
-
 /**
  * edit method
  *
@@ -87,6 +87,7 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		$this->isLoggedIn();
 		if (!$this->Campaign->exists($id)) {
 			throw new NotFoundException(__('Invalid campaign'));
 		}
@@ -106,7 +107,7 @@ class CampaignsController extends AppController {
 				$this->fileUpload($upload_file,$upload_path);
 				$this->redirect(array('action' => 'view',$id));
 			}else{
-				$this->Session->setFlash(__(CAMPAIGN_NOT_UPDATED,'alert-box', array('class'=>'alert-danger')));
+				$this->Session->setFlash(CAMPAIGN_NOT_UPDATED,'alert-box', array('class'=>'alert-danger'));
 			}
 		}else{
 			$this->request->data = $old_data;

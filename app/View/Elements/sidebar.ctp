@@ -62,16 +62,18 @@
 											 ); ?>
 								</td>
 							</tr>
-							<tr class="">
+							<!-- <tr class="">
 							    <td>
 									<span class="glyphicon glyphicon-hand-right text-primary"></span>
-									<?php echo $this->Html->link(__(
+									<?php
+									echo $this->Html->link(__(
 											'Campaign Records'),
 											 array('controller'=>'campaigns','action' => 'campaignRecords'),
 											 array('class'=>'side-menu')
-											 ); ?>
+											 );
+									?>
 							    </td>
-							</tr>
+							</tr> -->
 						</table>
 					</div>
 				</div>
