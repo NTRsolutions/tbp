@@ -47,8 +47,8 @@
 			} ?>
 		<?php echo $this->Form->create('Campaign',array('enctype' => 'multipart/form-data','class'=>'form-horizontal')); ?>
 		<?php echo $this->Form->input('id'); ?>
-    	<div class="col-sm-12">
-		    <div class="col-sm-12">
+                <div class="col-sm-12">
+		    <div class="col-sm-5" style="margin-top: 10px;margin-bottom: 20px;">
 		    	<label class="lbl-txt">Client</label>
 				<?php  
 				    echo $this->Form->input('client_id',array(
@@ -56,7 +56,18 @@
 						'label'=>false
 					));
 				?>
-			</div>
+                    </div>
+                    <div class="col-sm-5 pull-right" style="margin-top: 10px;margin-bottom: 20px;">
+				<label class="lbl-txt">Campaign Data</label><br>
+				<?php
+					echo $this->Form->input('campaign_data',array(
+						'class'=>'form-control',
+						'label'=>false,
+						'placeholder'=>'Campaign Data'
+						
+					));
+				?>
+                    </div>
 		</div>
 		<div class="col-sm-12 ">
 			<div class="col-xs-5">
