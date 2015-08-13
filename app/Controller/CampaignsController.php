@@ -12,17 +12,35 @@ class CampaignsController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Paginator','RequestHandler');
+        //public $components = array('RequestHandler');
+	public $helpers = array('Js');
 
 /**
  * index method
  *
  * @return void
  */
-	public function index() {
+	public function index($status=null) {
 		$this->isLoggedIn();
 		$this->Campaign->recursive = 0;
+                $conditions = array('status'=>1);
 		$conditions = array();
+                
+                /* For Getting Campaigns According to Status(Live, Paused Or UnderReveiw) */
+		if($status){
+			if($status==1){
+				$conditions['status'] = 1;
+				$CampaignType="live";
+			}else if($status==2){
+				$conditions['status'] = 2;
+				$CampaignType="paused";
+			}else{
+				$conditions['status'] = 0;
+				$CampaignType="inactive";
+			}
+		}
+                
 		$this->paginate = array(
 			'conditions'=>$conditions,
 			'limit' => CAMPAIGN_LIMIT,
@@ -103,6 +121,8 @@ class CampaignsController extends AppController {
 				$this->request->data['Campaign']['app_logo_name'] = $file_name;
 			}
 			if($this->Campaign->save($this->request->data)) {
+                                $file_name = time().'_'.$upload_file["name"];
+				$upload_path = UPLOAD_PATH. DS .$file_name;
 				$this->Session->setFlash(CAMPAIGN_UPDATED,'alert-box', array('class'=>'alert-success'));
 				$this->fileUpload($upload_file,$upload_path);
 				$this->redirect(array('action' => 'view',$id));
@@ -137,4 +157,42 @@ class CampaignsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+/*
+	 *	Function Name		: showCampaings
+	 *	Description			: Used to Pause and Resume Campaigns
+	 *	Input Parameters	: id, status, current_page
+	 *	Returns 			: void
+	*/
+	public function playPause($id=null,$status=null, $current_page=null){
+		
+		//debug($id." ".$status." ".$current_page_url);
+		$CampaignType = $_POST['CampaignType'];
+		$page = "";
+		if($current_page==null){
+			$page = "page:1";
+		}else if($current_page=="edit"){
+			$page =	$current_page;
+		}else {
+			$page = "page:".$current_page;
+		}
+		if($CampaignType=="paused"){
+			$url=2;
+		}else if($CampaignType=="inactive"){
+			$url=3;
+		}
+		if($id && $status){
+			$this->request->onlyAllow('post', 'delete');
+			if($this->Campaign->updateAll(array('status'=>$status),array('Campaign.id'=>$id))) {
+				if($page=="edit"){
+					// $this->Session->setFlash('Campaign Status Updated','alert-box', array('class'=>'alert-success'));
+					$this->redirect(array('action'=>'edit',$id));
+				}
+				$this->redirect(array('action'=>'index',$url,$page));
+			}else {
+				
+				$this->redirect(array('action'=>'index',$url,$page));
+			}
+		}
+	}        
 }
