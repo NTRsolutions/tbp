@@ -212,15 +212,17 @@
 	        	</div>
 	         </div>
 		</div>
-		<div class="col-sm-12 space">
+		<!-- <div class="col-sm-12 space">
 			<div class="col-sm-3" style="color: red;">
+				Name: <input type="checkbox" />
 				<?php
 					echo $this->Form->input('type', array(
-						'label'=>'*Only for new Users'
+						'type'=> 'checkbox',
+						// 'label'=>'*Only for new Users'
 					));
 				?>
 			</div>
-		</div>
+		</div> -->
 		<div class="col-sm-12">
 		    <div class="col-sm-5"><br>
 		       <?php echo $this->Form->submit('Submit',array('class'=>array('form-control','btn btn-success'))); ?>
