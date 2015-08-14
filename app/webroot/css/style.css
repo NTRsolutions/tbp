@@ -60,4 +60,10 @@ th a.desc:after {
 	padding: 5px !important;
 	color: #F30B0B !important;
 }
+
+.error-message:before {
+	font-family: "Glyphicons Halflings"; 
+  	content: "\e101";
+  	margin-right:1%; 
+}
 	
