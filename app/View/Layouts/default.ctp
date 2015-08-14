@@ -24,8 +24,8 @@
 		echo $this->Html->script('jquery-2.1.4.min');
 		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('zebra_datepicker');
-		echo $this->Html->script('ripples.min.js');
-		echo $this->Html->script('material.min.js');
+		echo $this->Html->script('material.min');
+		echo $this->Html->script('ripples.min');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
