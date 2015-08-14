@@ -24,10 +24,36 @@ class CampaignsController extends AppController {
  */
 	public function index($status=null) {
 		$this->isLoggedIn();
+                $title="";
+		$client_id="";
+		$created_on="";
+		$campstatus="";
 		$CampaignType="live";
 		$this->Campaign->recursive = 0;
-        $conditions = array('status'=>1);
-		        
+                $conditions = array('status'=>1);
+		 /* For Searching*/
+		if(count($this->request->query)>0) {
+			$title = $this->request->query['title'];
+			$client_id = $this->request->query['client_id'];
+			$created_on = $this->request->query['created'];
+			$campstatus = $this->request->query['campStatus'];
+			if(!empty($title)){
+				$conditions["Campaign.title LIKE"] = '%'.$title.'%';
+			}
+			if(!empty($client_id)){
+				$conditions["Campaign.client_id"] = $client_id;
+			}
+			if(!empty($created_on)){
+				$conditions["DATE(Campaign.created)"] = $created_on;
+			}
+			if(!empty($campstatus)){
+				if($campstatus==3){
+					$conditions['status'] = 0;
+				}else {
+					$conditions['status'] = $campstatus;
+				}
+			}
+		}       
         /* For Getting Campaigns According to Status(Live, Paused Or UnderReveiw) */
 		if($status){
 			if($status==1){
@@ -203,5 +229,25 @@ class CampaignsController extends AppController {
 				$this->redirect(array('action'=>'index',$url,$page));
 			}
 		}
-	}        
+	} 
+        
+        /*
+	 *	Function Name		: exportCampaigns
+	 *	Description			: Used to Export the Campaigns to Excel Sheet
+	 *	Input Parameters	: null
+	 *	Returns 			: void
+	*/
+	public function exportCampaigns($status){
+		$data = $this->Campaign->find('all',array(
+					'conditions'=>array(
+						'Campaign.status'=>$status
+					),
+					'order' => array(
+						'created' => 'desc'
+					)
+				));
+		$this->set('data',$data);
+		$this->layout = 'ajax';
+	}
+	
 }
