@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+error_reporting(0);
 /**
  * Campaigns Controller
  *
