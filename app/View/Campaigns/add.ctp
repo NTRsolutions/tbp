@@ -26,7 +26,7 @@
 	}
 </style>
 <?php //echo $this->Html->script('initailize_datepicker'); ?>
-<div class="row" style="margin-bottom: 10px;">
+<div class="table">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h1 class="panel-title">Add Campaign</h1>
