@@ -24,7 +24,7 @@
 		array('method '=>'POST','success'=>'alert("Status Updated");','async' => true,'update' => '#content')
 	));
 ?>
-<div class="row">
+<div class="table">
     <div class="panel panel-info">
     <div class="panel-heading">
         <h4 class="panel-title">
