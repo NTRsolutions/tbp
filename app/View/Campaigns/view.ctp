@@ -1,5 +1,10 @@
 <div class="table">
-<h2><?php echo __('Campaigns'); ?></h2>
+    <div class="panel panel-info">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            Campaigns
+        </h4>
+    </div>
 	<table class="table table-bordered table-responsive table-striped">
 		<tbody>
 		<tr class="something">

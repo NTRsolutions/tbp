@@ -21,7 +21,7 @@
 	$CmpStatus = $campaigns[0]['Campaign']['status'];
 ?>
 <div class="campaigns index" >
-	<div class="row panel panel-info">
+	<div class="table panel panel-info">
 		<div class="panel-heading">
 			<?php if($status==2 || $campstatus==2){ ?>
 				<h1 class="panel-title">Paused Campaigns</h1>
@@ -49,8 +49,8 @@
 	            </div>
 	            <div class="col-xs-3">
 					<div class="input-group">
-						<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-						<?php echo $this->Form->input("client_id",array('required'=>false,'empty' => 'Client Name','label'=>false,'selected'=>$ClientID,'class'=>'form-control')); ?>
+	<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        <?php echo $this->Form->input("client_id",array('required'=>false,'empty' => 'Client Name','label'=>false,'selected'=>$ClientID,'class'=>'form-control')); ?>
 	                </div>
 	            </div>
 	            <div class="col-xs-3">
