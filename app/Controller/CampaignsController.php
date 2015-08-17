@@ -77,6 +77,8 @@ class CampaignsController extends AppController {
 		'campaigns'=>$this->Paginator->paginate(),
 		'CampaignType'=>$CampaignType
 		));
+                $clients = $this->Campaign->Client->find('list');
+		$this->set(compact('clients'));
 	}
 
 /**
