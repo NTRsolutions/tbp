@@ -41,7 +41,7 @@
 					'id'=>'campStatus',
 					'value'=>'1'
 			)); ?>
-	            <div class="col-xs-3">
+	            <div class="col-xs-3 block">
 					<div class="input-group">
 						<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
 						<?php echo $this->Form->input("title",array('required'=>false,'label'=>false,'class'=>'form-control','placeholder'=>'Campaign Title','value'=>$Title)); ?>
@@ -49,15 +49,15 @@
 	            </div>
 	            <div class="col-xs-3">
 					<div class="input-group">
-	<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-        <?php echo $this->Form->input("client_id",array('required'=>false,'empty' => 'Client Name','label'=>false,'selected'=>$ClientID,'class'=>'form-control')); ?>
+						<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        				<?php echo $this->Form->input("client_id",array('required'=>false,'empty' => 'Client Name','label'=>false,'selected'=>$ClientID,'class'=>'form-control')); ?>
 	                </div>
 	            </div>
 	            <div class="col-xs-3">
 	                <input type="text" name="created" class="form-control" placeholder="Created ON" value="<?php echo $CreatedON; ?>" id="createdON">
 	            </div>
 	            <div class="col-xs-3">
-	                <input type="submit" id="searchCampaigns" onclick="return validate();" class="btn btn-info fa fa-upload pull-right">
+	                <input type="submit" id="searchCampaigns" onclick="return validate();" class="btn btn-default btn-raised">
 	            </div>
 			<?php echo $this->Form->end();?>
 		</div>
