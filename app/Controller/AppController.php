@@ -239,7 +239,7 @@ class AppController extends Controller {
 				$customer_details['customer_id']	= $this->base64encode($data['Customer']['id']);
 				$customer_details['mobile_no']		= $this->base64encode($data['Customer']['mobile_no']);
 				$customer_details['email_id']		= $this->base64encode($data['Customer']['email_id']);
-				$customer_details['my_bucks']		= $this->base64encode($data['Customer']['my_bucks']);
+				$customer_details['my_earning']		= $this->base64encode($data['Customer']['my_earning']);
 				$customer_details['referral_code']	= $this->base64encode($data['Customer']['referral_code']);
 				$customer_data[] = $customer_details;
 			}else{

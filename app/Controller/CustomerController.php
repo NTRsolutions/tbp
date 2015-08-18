@@ -106,7 +106,7 @@ class CustomerController extends AppController {
 				$new_customer["id"]			= $customer_id;
 				$new_customer["mobile_no"]	= $mobile_no;
 				$new_customer["android_id"]	= $android_id;
-				$new_customer["my_bucks"]	= SIGNUP_AMOUNT;
+				$new_customer["my_earning"]	= SIGNUP_AMOUNT;
 				$new_customer["referral_code"]	= $this->GenerateAlphaNumericString();
 				if ($this -> Customer -> saveAll($new_customer)) {
 					$response["customer_data"] = $this->getCustomerDetails($this->Customer->id);  
