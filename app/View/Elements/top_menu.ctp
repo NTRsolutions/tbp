@@ -15,7 +15,7 @@
 		$class = "";
 	}
 ?>
-<nav class="navbar shadow-z-2" id="topNavigation">
+<nav class="navbar shadow-z-1" id="topNavigation">
 	<div class="container-fluid">  
     	<ul class="nav navbar-nav">
 			<li <?php if($class!="" and ($i==1)) echo "$class"; else{?>class= navMenu <?php } ?> role="presentation"><?php echo $this -> Html -> link(__('Dashboard'), array('controller' => 'admin', 'action' => 'dashboard')); ?></li>
@@ -25,7 +25,7 @@
 			<li <?php if($class!="" and ($i==5)) echo "$class"; else{?>class= "disabled" <?php } ?> role="presentation"><a href="#" >Menu4</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-        	  	<?php echo $this->Html->link(('Logout'), array('controller'=>'admin','action' => 'logout'),array('class'=>'btn btn-raised btn-danger pull-right','title'=>'Logout')); ?>
+        	  	<?php echo $this->Html->link(('Logout'), array('controller'=>'admin','action' => 'logout'),array('class'=>'btn btn-danger pull-right','title'=>'Logout')); ?>
   		</ul>
 	</div>
 </nav>

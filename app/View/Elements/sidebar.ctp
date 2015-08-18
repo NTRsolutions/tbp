@@ -1,4 +1,4 @@
-<nav id="sidebar shadow-z-5">
+<nav id="sidebar">
 	<div class="row">
 	    <div class="panel-group" id="accordion">
 	        <div class="panel panel-info">
