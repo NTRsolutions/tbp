@@ -1,14 +1,28 @@
-<div class="clients form">
-<?php echo $this->Form->create('Client'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Client'); ?></legend>
-	<?php
-		echo $this->Form->input('client_name');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		Add Client
+	</div>
 </div>
-<div class="actions">
+<div class="clients form">
+	<?php echo $this->Form->create('Client'); ?>
+		<div class="col-sm-4 form-group">
+	    	<div class="input-group">
+				<span class="input-group-addon"><span class="mdi-action-account-box"></span></span>
+				<?php
+					echo $this->Form->input('client_name',array(
+						'class'=>'form-control',
+						'placeholder'=>'Client Name',
+						'label'=>false,
+					));
+				?>
+	        	<span class="input-group-btn">
+	        		<?php echo $this->Form->submit('Add',array('class'=>array('btn btn-primary'))); ?>
+	        	</span>
+	    	</div>
+		</div>
+
+</div>
+<!-- <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
@@ -16,4 +30,4 @@
 		<li><?php echo $this->Html->link(__('List Campaigns'), array('controller' => 'campaigns', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Campaign'), array('controller' => 'campaigns', 'action' => 'add')); ?> </li>
 	</ul>
-</div>
+</div> -->

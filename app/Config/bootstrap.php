@@ -134,7 +134,7 @@ define('CAMPAIGN_UPDATED', 'Campaign Successfully Updated.');
 define('CAMPAIGN_NOT_UPDATED', 'The campaign could not be Updated. Please, try again.');
 define('CAMPAIGN_DELETED', 'Campaign deleted');
 define('CAMPAIGN_NOT_DELETED', 'Campaign was not deleted');
-define('CAMPAIGN_LIMIT', 2);
+define('CAMPAIGN_LIMIT', 5);
 
 			/* Others */
 define('LOGO_UPLOADED', 'Logo Successfully Changed.');

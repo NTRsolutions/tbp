@@ -27,14 +27,12 @@
 	.input-group-addon{color:#03A9F4;}
 </style>
 <?php //echo $this->Html->script('initailize_datepicker'); ?>
-<div class="table">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h1 class="panel-title">Add Campaign</h1>
-			</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h1 class="panel-title">Add Campaign</h1>
 		</div>
-
-		<div class="campaigns form">
+	</div>
+	<div class="campaigns form">
 		<?php echo $this->Form->create('Campaign',array('enctype' => 'multipart/form-data','class'=>'form-horizontal')); ?>
     	<div class="col-sm-12">
 			<div class="col-sm-5">
@@ -246,9 +244,7 @@
 		    </div>
 		</div>
 		<?php echo $this->Form->end(); ?>
-		</div>
 	</div>
-</div>
 <script type="text/javascript">
 
 	$(document).ready(function(){
