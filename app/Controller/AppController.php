@@ -283,5 +283,47 @@ class AppController extends Controller {
 			return false;
 
 	}
+        //------------------Start Client Function-------------
+        /*
+	 * Function Name	: getLoggedInClientName
+	 * Description		: Return user name
+	 * Input Parameters	: null
+	 * Returns		: Data of Logged in User(Client)
+	 */
+
+	public function getLoggedInClientName() {
+		$sessionComponents = $this -> Components -> load('Session');
+		$client_session_data = $sessionComponents -> read('logged_client_data');
+		if ($client_session_data != "" || (isset($client_session_data[0]))) {
+			return $client_session_data[0]['Client']['username'];
+		}
+	}
+         
+        /*
+	 * Function Name	: isClientLoggedIn
+	 * Description		: Check client is logged in or not
+	 * Input Parameters	: null 
+	 */
+
+	public function isClientLoggedIn() {
+		$sessionComponent = $this -> Components -> load('Session');
+		$client_session_data = $sessionComponent -> read('logged_client_data');
+		if ($client_session_data == "" || (!isset($client_session_data[0]))) {
+			$this -> Session -> setFlash(LOGIN_TO_VIEW_DETAILS,'alert-box', array('class'=>'alert-danger'));
+			$this -> redirect('/Clients/login');
+		}
+	}
+        
+        public function clientLogout() {
+		$this -> Session -> delete('logged_client_data');
+		$this -> Session -> delete('Client.username');
+		// $this -> Session -> setFlash(LOGOUT_SUCCESSFULLY, 'success');
+		$this -> Session -> setFlash(LOGOUT_SUCCESSFULLY, 'alert-box', array('class'=>'alert-success'));
+		$this -> redirect('/Clients/login');
+	}
+        
+        //-------------end  Client Function-----------------------
+
+	
 
 }

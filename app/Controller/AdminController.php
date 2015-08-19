@@ -81,6 +81,7 @@ class AdminController extends AppController {
 	 public function login1(){
 		 $this->layout = "test";
 	 }
+
 }
 
 ?>
