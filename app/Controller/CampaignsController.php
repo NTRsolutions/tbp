@@ -1,6 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
-error_reporting(0);
+// error_reporting(0);
 /**
  * Campaigns Controller
  *
@@ -14,8 +14,19 @@ class CampaignsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator','RequestHandler');
-        //public $components = array('RequestHandler');
 	public $helpers = array('Js');
+	
+	
+/**
+ * beforeFilter method
+ *
+ * @return void
+ */
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->isLoggedIn();
+	}
+	
 
 /**
  * index method
@@ -23,14 +34,14 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function index($status=null) {
-		$this->isLoggedIn();
-                $title="";
+		// $this->isLoggedIn();
+        $title="";
 		$client_id="";
 		$created_on="";
 		$campstatus="";
 		$CampaignType="live";
 		$this->Campaign->recursive = 0;
-                $conditions = array('status'=>1);
+        $conditions = array('status'=>1);
 		 /* For Searching*/
 		if(count($this->request->query)>0) {
 			$title = $this->request->query['title'];
@@ -89,7 +100,7 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		$this->isLoggedIn();
+		// $this->isLoggedIn();
 		if (!$this->Campaign->exists($id)) {
 			throw new NotFoundException(__('Invalid campaign'));
 		}
@@ -103,7 +114,7 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function add() {
-		$this->isLoggedIn();
+		// $this->isLoggedIn();
 		if ($this->request->is('post')) {
 			$this->Campaign->create();
 			$this->Campaign->set($this->request->data);
@@ -137,7 +148,7 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		$this->isLoggedIn();
+		// $this->isLoggedIn();
 		if (!$this->Campaign->exists($id)) {
 			throw new NotFoundException(__('Invalid campaign'));
 		}
@@ -176,7 +187,7 @@ class CampaignsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
-		$this->isLoggedIn();
+		// $this->isLoggedIn();
 		$this->Campaign->id = $id;
 		if (!$this->Campaign->exists()) {
 			throw new NotFoundException(__('Invalid campaign'));
@@ -252,4 +263,108 @@ class CampaignsController extends AppController {
 		$this->layout = 'ajax';
 	}
 	
+
+			/*****	Client Module	****/
+
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function listClients() {
+		// $this->isLoggedIn();
+		$this->loadModel('Client');
+		$this->Client->recursive = 0;
+		// debug($this->paginate('Client'));
+		$this->set('clients', $this->paginate('Client'));
+	}
+
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function clientView($id = null) {
+		// $this->isLoggedIn();
+		$this->loadModel('Client');
+		if (!$this->Client->exists($id)) {
+			throw new NotFoundException(__('Invalid client'));
+		}
+		$options = array('conditions' => array('Client.' . $this->Client->primaryKey => $id));
+		$this->set('client', $this->Client->find('first', $options));
+	}
+
+/**
+ * add method
+ *
+ * @return void
+ */
+	public function clientAdd() {
+		// $this->isLoggedIn();
+		$this->loadModel('Client');
+		if ($this->request->is('post')) {
+			$this->Client->create();
+			if ($this->Client->save($this->request->data)) {
+				$this->Session->setFlash('The client has been saved','success');
+				$this->redirect(array('action' => 'listClients'));
+			} else {
+				$this->Session->setFlash('The client could not be saved. Please, try again.','error');
+			}
+		}
+	}
+
+/**
+ * edit method
+ *
+ * @throws NotFoundException
+ * @param string $id
+ * @return void
+ */
+	public function clientEdit($id = null) {
+		// $this->isLoggedIn();
+		$this->loadModel('Client');
+		if (!$this->Client->exists($id)) {
+			throw new NotFoundException(__('Invalid client'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->Client->save($this->request->data)) {
+				$this->Session->setFlash('The client has been saved','success');
+				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash('The client could not be saved. Please, try again.','error');
+			}
+		} else {
+			$options = array('conditions' => array('Client.' . $this->Client->primaryKey => $id));
+			$this->request->data = $this->Client->find('first', $options);
+		}
+	}
+
+/**
+ * delete method
+ *
+ * @throws NotFoundException
+ * @throws MethodNotAllowedException
+ * @param string $id
+ * @return void
+ */
+	public function clientDelete($id = null, $current_page=null) {
+		// echo 1;die;
+		// $this->isLoggedIn();
+		$this->loadModel('Client');
+		$this->Client->id = $id;
+		if (!$this->Client->exists()) {
+			throw new NotFoundException(__('Invalid client'));
+		}
+		$this->request->onlyAllow('post', 'delete');
+		if ($this->Client->delete()) {
+			$this->Session->setFlash(__('Client deleted'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('Client was not deleted'));
+		$this->redirect(array('action' => 'index'));
+	}
 }
+
+
