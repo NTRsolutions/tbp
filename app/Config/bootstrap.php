@@ -152,3 +152,5 @@ define('DEVICE_ID_NOT_UPDATED', 'Device Id not Updated');
 define('DATA_NOT_SAVED_IN_CUSTOMER_HISTORY', 'Date not tranferred in Customer History');
 define('DEVICE_ID_UPDATED', 'Device id Updated');
 define('INVALID_INTEGET_VALUE', 'Invalid Integer Value');
+define('TRY_AGAIN','Please try again');
+define('PASSWORD_CHANGED','Password chnaged successfully');
